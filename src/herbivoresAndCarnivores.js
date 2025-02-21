@@ -29,10 +29,11 @@ class Carnivore extends Animal {
     super(name, health);
   }
   bite(victim) {
-    if (victim.hasOwnProperty('hidden') && !victim.hidden) {
+    if (victim instanceof Herbivore && !victim.hidden) {
+      // ✅ Ensures victim is an actual Herbivore and is not hidden
       victim.health -= 50;
+      victim.checkHealth();
     }
-    victim.checkHealth();
   }
 }
 
